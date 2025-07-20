@@ -1,0 +1,17 @@
+<div class="product-details">
+  <img [src]="product?.image" [alt]="product?.title" />
+
+  <div class="product-info">
+    <h2>{{ product?.title }}</h2>
+    <p class="price">{{ product?.price | currency }}</p>
+
+    <label>
+      Cantidad:
+      <input type="number" [(ngModel)]="quantity" min="1" />
+    </label>
+
+    <button (click)="addToCart()">
+      🛒 Añadir al carrito
+    </button>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.checkout-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem;
+  margin-top: 3rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.checkout-container input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.checkout-container button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.checkout-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

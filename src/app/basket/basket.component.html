@@ -1,0 +1,42 @@
+<div class="basket-container">
+  <div class="basket-list">
+    <h2>Carrito</h2>
+    <ul>
+      <li *ngFor="let item of basketItems$ | async">
+        {{ item.title }} -
+        <input
+          type="number"
+          min="0"
+          [value]="item.quantity"
+          (input)="onQuantityInput($event, item.id)"
+          style="width: 50px;"
+        />
+        x {{ item.price | currency }} =
+        {{ (item.price * item.quantity) | currency }}
+
+        <button (click)="removeItem(item.id)" aria-label="Eliminar producto">
+          ❌
+        </button>
+      </li>
+    </ul>
+    <p class="total">Total: {{ total$ | async | currency }}</p>
+  </div>
+
+  <div class="shipping-form">
+    <h2>Datos de envío</h2>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <input type="text" name="nombre" placeholder="Nombre" [(ngModel)]="shipping.nombre" required />
+      <input type="text" name="apellido" placeholder="Apellido" [(ngModel)]="shipping.apellido" required />
+      <input type="text" name="direccion" placeholder="Dirección" [(ngModel)]="shipping.direccion" required />
+      <input type="text" name="cp" placeholder="Código Postal" [(ngModel)]="shipping.cp" required />
+      <input type="tel" name="telefono" placeholder="Teléfono" [(ngModel)]="shipping.telefono" required />
+
+      <label>
+        <input type="checkbox" required />
+        Acepto los términos y condiciones
+      </label>
+
+      <button type="submit" [disabled]="!form.valid || (basketItems$ | async)?.length === 0">Enviar pedido</button>
+    </form>
+  </div>
+</div>

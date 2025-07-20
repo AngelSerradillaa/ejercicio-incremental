@@ -1,0 +1,11 @@
+<app-search (search)="filterProducts($event)"></app-search>
+
+<div class="products-grid">
+  <ng-container *ngFor="let product of filteredProducts">
+    <a [routerLink]="['/product', product.id]" class="product-card">
+      <img [src]="product.image" [alt]="product.title" />
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price | currency }}</p>
+    </a>
+  </ng-container>
+</div>

@@ -1,0 +1,10 @@
+h1 {
+  text-align: center;
+  margin-top: 4rem;
+  color: #6a1b9a;
+  font-size: 2.5rem;
+}
+.products-container{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

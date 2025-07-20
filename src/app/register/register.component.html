@@ -1,0 +1,22 @@
+<div class="form-container">
+  <h2>Registro</h2>
+  <form #registerForm="ngForm" (ngSubmit)="onRegister()">
+    <input type="text" name="nombre" [(ngModel)]="nombre" placeholder="Nombre" required />
+    <div *ngIf="registerForm.submitted && !nombre">Nombre requerido</div>
+
+    <input type="text" name="apellido" [(ngModel)]="apellido" placeholder="Apellido" required />
+    <div *ngIf="registerForm.submitted && !apellido">Apellido requerido</div>
+
+    <input type="email" name="email" [(ngModel)]="email" placeholder="Email" required email />
+    <div *ngIf="registerForm.submitted && registerForm.controls['email']?.invalid">
+      Email inválido
+    </div>
+
+    <input type="password" name="password" [(ngModel)]="password" placeholder="Contraseña" required minlength="4" />
+    <div *ngIf="registerForm.submitted && registerForm.controls['password']?.errors?.['minlength']">
+      Mínimo 4 caracteres
+    </div>
+
+    <button type="submit" [disabled]="!registerForm.valid">Continuar</button>
+  </form>
+</div>

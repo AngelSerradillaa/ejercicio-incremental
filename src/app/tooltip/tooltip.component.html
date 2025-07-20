@@ -1,0 +1,34 @@
+<header class="tooltip-container">
+  <a routerLink="/">
+    <img src="assets/logo.png" alt="Logo de la tienda" class="logo" />
+  </a>
+
+  <div class="auth-buttons">
+    <ng-container *ngIf="!isLoggedIn; else logoutTemplate">
+      <button class="login-button" routerLink="/basket">🛒 Carrito</button>
+      <button class="login-button" routerLink="/login">Login</button>
+      <button class="login-button" routerLink="/register">Register</button>
+    </ng-container>
+    <ng-template #logoutTemplate>
+      <span class="user-email">Hola, {{ userName }}</span>
+      <button class="login-button" routerLink="/basket">🛒 Carrito</button>
+      <button class="login-button" (click)="logout()">Logout</button>
+    </ng-template>
+  </div>
+
+
+  <button class="hamburger-button" (click)="toggleMenu()">☰</button>
+</header>
+
+<div class="mobile-menu" *ngIf="menuOpen">
+  <ng-container *ngIf="!isLoggedIn; else mobileLogout">
+    <button class="menu-login" routerLink="/basket">🛒 Carrito</button>
+    <button class="menu-login" routerLink="/login" (click)="toggleMenu()">Login</button>
+    <button class="menu-login" routerLink="/register" (click)="toggleMenu()">Register</button>
+  </ng-container>
+  <ng-template #mobileLogout>
+    <span class="user-name">Hola, {{ userName }}</span>
+    <button class="menu-login" routerLink="/basket">🛒 Carrito</button>
+    <button class="menu-login" (click)="logout()">Logout</button>
+  </ng-template>
+</div>

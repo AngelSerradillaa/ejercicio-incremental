@@ -1,0 +1,33 @@
+<div class="checkout-container">
+  <h2>Pago</h2>
+
+  <form (ngSubmit)="submitPayment()">
+    <input
+      type="text"
+      placeholder="Número de tarjeta"
+      [(ngModel)]="cardNumber"
+      name="cardNumber"
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="Fecha de caducidad (MM/YY)"
+      [(ngModel)]="expiry"
+      name="expiryDate"
+      required
+    />
+
+    <input
+      type="text"
+      placeholder="CVC"
+      [(ngModel)]="cvc"
+      name="cvc"
+      required
+    />
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Procesando...' : 'Pagar' }}
+    </button>
+  </form>
+</div>
